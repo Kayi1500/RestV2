@@ -39,17 +39,17 @@ public class Meny extends AppCompatActivity {
 
         API api = retrofit.create(API.class);
 
-        Call<ResponseBody> call = api.getData("http://www.json-generator.com/api/json/get/bUXJechcuq?indent=2");
+        Call<ResponseBody> call = api.getData("http://10.0.2.2/testi/API.php");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
                     String res = response.body().string();
+                    Log.d("list", res);
                     try {
                         JSONArray jsArr = new JSONArray(res);
                         for (int x=0 ; x<jsArr.length() ; x++){
-                            list.add(jsArr.getJSONObject(x).getString("Name").toString());
-                            Log.d("list", list.toString());
+                            list.add(jsArr.getJSONObject(x).getString("Meny_Text").toString());
                         }
                         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                                 parent,

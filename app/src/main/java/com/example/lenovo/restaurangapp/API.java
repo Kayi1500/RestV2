@@ -10,7 +10,7 @@ import retrofit2.http.Url;
  */
 
 public interface API {
-    String base_url = "http://www.json-generator.com/";
+    String base_url = "http://10.0.2.2/";
     @GET
     Call<ResponseBody> getData(@Url String link);
 }
